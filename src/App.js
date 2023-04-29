@@ -1,28 +1,26 @@
 import './App.css';
+import Header from './components/header';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Employees from './components/Employees';
+import Certifications from './components/Certifications';
+import Projects from './components/Projects';
+import NoPage from './components/NoPage';
+import Employee_details from './components/widgets/Employee-details';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Employees />} />
+          <Route path="certification" element={<Certifications />} />
+          <Route path="project" element={<Projects />} />
+          <Route path="*" element={<NoPage />} />
+          <Route path='/employees/details' element={<Employee_details />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
